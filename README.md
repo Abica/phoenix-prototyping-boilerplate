@@ -6,11 +6,14 @@ With liveview on it's way I've been prototyping some ideas with drab and texas a
 
 The template project preconfigures a few common libraries and combines some samples to make it easier to test things out with less friction. Some of these libraries include:
 
-  * coherence [`https://github.com/smpallen99/coherence`](https://github.com/smpallen99/coherence) with full options. Currently runs a patched version of coherence that hasn't had it's PR merged back into the main repo yet.
-  * texas [`https://gitlab.com/dgmcguire/texas`](https://gitlab.com/dgmcguire/texas). It integrates the todo list demo from [`https://gitlab.com/dgmcguire/example_texas_app`](https://gitlab.com/dgmcguire/example_texas_app). It functions the same but the styling is not 100% identical to the original.
-  * drab [`https://tg.pl/drab`](https://tg.pl/drab). Fully plumbed in and has some boilerplate from the demo, but is commented out as texas is the default. `grep -Ri drab lib/ config/ mix.exs` and uncomment the lines to re-enable drab.
-  * quantum [`https://github.com/quantum-elixir/quantum-core`](https://github.com/quantum-elixir/quantum-core) for scheduled jobs.
-  * semantic ui [`https://semantic-ui.com`](https://semantic-ui.com), as well as a general layout sample on the dashboard and login sample applied to the coherence login.
+  * [coherence](https://github.com/smpallen99/coherence) with full options. Currently runs a patched version of coherence that hasn't had it's PR merged back into the main repo yet.
+  * [texas](https://gitlab.com/dgmcguire/texas). It integrates the todo list demo from [`https://gitlab.com/dgmcguire/example_texas_app`](https://gitlab.com/dgmcguire/example_texas_app). It functions the same but the styling is not 100% identical to the original.
+  * [drab](https://tg.pl/drab). Fully plumbed in and has some boilerplate from the demo, but is commented out as texas is the default. `grep -Ri drab lib/ config/ mix.exs` and uncomment the lines to re-enable drab.
+  * [quantum](https://github.com/quantum-elixir/quantum-core) for scheduled jobs.
+  * [semantic-ui](https://semantic-ui.com), as well as a general layout sample on the dashboard and login sample applied to the coherence login.
+  * [distillery](https://github.com/bitwalker/distillery/)
+  * [credo](https://github.com/rrrene/credo)
+  * [timex](https://github.com/bitwalker/timex)
 
 It is worth noting that drab and texas appear to play well together if you use them on separate content sections. I merely have drab disabled by default to avoid any potential confusion or conflicts if it wasn't necessary.
 
