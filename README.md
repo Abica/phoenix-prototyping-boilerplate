@@ -8,7 +8,7 @@ The template project preconfigures a few common libraries and combines some samp
 
   * [coherence](https://github.com/smpallen99/coherence) with full options. Currently runs a patched version of coherence that hasn't had it's PR merged back into the main repo yet.
   * [texas](https://gitlab.com/dgmcguire/texas). It integrates the todo list demo from [`https://gitlab.com/dgmcguire/example_texas_app`](https://gitlab.com/dgmcguire/example_texas_app). It functions the same but the styling is not 100% identical to the original.
-  * [drab](https://tg.pl/drab). Fully plumbed in and has some boilerplate from the demo, but is commented out as texas is the default. `grep -Ri drab lib/ config/ mix.exs` and uncomment the lines to re-enable drab.
+  * [drab](https://tg.pl/drab). Fully plumbed in and has some boilerplate from the demo, but is commented out as texas is the default. From a freshly cloned project, run `grep -Ri drab lib/ config/ mix.exs` and uncomment the lines to re-enable drab.
   * [quantum](https://github.com/quantum-elixir/quantum-core) for scheduled jobs.
   * [semantic-ui](https://semantic-ui.com), as well as a general layout sample on the dashboard and login sample applied to the coherence login.
   * [distillery](https://github.com/bitwalker/distillery/)
