@@ -1,0 +1,88 @@
+<div class="jumbotron">
+  <h2><%= @welcome_text %></h2>
+  <p class="lead"></p>
+</div>
+
+<div class="ui horizontal list">
+  <div class="item">
+    <img class="ui mini circular image" src="<%= avatar("molly") %>">
+    <div class="content">
+      <div class="ui sub header">Molly</div>
+      Coordinator
+    </div>
+  </div>
+  <div class="item">
+    <img class="ui mini circular image" src="<%= avatar("elyse") %>">
+    <div class="content">
+      <div class="ui sub header">Elyse</div>
+      Developer
+    </div>
+  </div>
+  <div class="item">
+    <img src="<%= avatar("eve") %>" class="ui mini circular image">
+    <div class="content">
+      <div class="ui sub header">Eve</div>
+      Project Manager
+    </div>
+  </div>
+</div>
+
+
+<div class="ct-chart ct-golden-section" id="chart1" style="width: 25%;height: 25%;"></div>
+<div class="ct-chart ct-golden-section" id="chart2" style="width: 25%;height: 25%;"></div>
+<div class="ct-chart ct-golden-section" id="chart3" style="width: 25%;height: 25%;"></div>
+
+<script>
+$(function() {
+  var chart = new Chartist.Line('#chart1', {
+    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    series: [
+      [5, 5, 10, 8, 7, 5, 4, null, null, null, 10, 10, 7, 8, 6, 9],
+      [10, 15, null, 12, null, 10, 12, 15, null, null, 12, null, 14, null, null, null],
+      [null, null, null, null, 3, 4, 1, 3, 4,  6,  7,  9, 5, null, null, null],
+      [{x:3, y: 3},{x: 4, y: 3}, {x: 5, y: undefined}, {x: 6, y: 4}, {x: 7, y: null}, {x: 8, y: 4}, {x: 9, y: 4}]
+    ]
+  }, {
+    fullWidth: true,
+    chartPadding: {
+      right: 10
+    },
+    low: 0
+  });
+
+
+
+
+  // Create a simple bi-polar bar chart
+  var chart = new Chartist.Bar('#chart2', {
+    labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
+    series: [
+      [1, 2, 4, 8, 6, -2, -1, -4, -6, -2]
+    ]
+  }, {
+    high: 10,
+    low: -10,
+    axisX: {
+      labelInterpolationFnc: function(value, index) {
+        return index % 2 === 0 ? value : null;
+      }
+    }
+  });
+
+  // Listen for draw events on the bar chart
+  chart.on('draw', function(data) {
+    // If this draw event is of type bar we can use the data to create additional content
+    if(data.type === 'bar') {
+      // We use the group element of the current series to append a simple circle with the bar peek coordinates and a circle radius that is depending on the value
+      data.group.append(new Chartist.Svg('circle', {
+        cx: data.x2,
+        cy: data.y2,
+        r: Math.abs(Chartist.getMultiValue(data.value)) * 2 + 5
+      }, 'ct-slice-pie'));
+    }
+  });
+
+});
+
+</script>
+

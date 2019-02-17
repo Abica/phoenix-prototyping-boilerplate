@@ -1,0 +1,26 @@
+<section class="todoapp">
+  <header class="header">
+    <h1>todos</h1>
+    <form action="/update" method="post">
+      <button name="toggle_all" value="toggle_all" id="toggle-all" class="toggle-all" type="submit"></button>
+    </form>
+    <form action="/update" method="post" class="main">
+      <input autocomplete="off" name="new_todo" class="new-todo" placeholder="What needs to be done?" autofocus></input>
+      <button type="submit" style="display:none"></button>
+    </form>
+  </header>
+
+  <section class="main">
+    <ul data-texas="todo_list" class="todo-list">
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <span class="todo-count" data-texas="list_count"></span>
+    <ul data-texas="filters" class="filters"></ul>
+    <form action="/update" method="post">
+      <button name="clear_done" value="clear_done" type="submit" class="clear-completed">Clear completed</button>
+    </form>
+  </footer>
+</section>
+

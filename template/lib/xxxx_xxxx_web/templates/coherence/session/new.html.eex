@@ -1,0 +1,106 @@
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://semantic-ui.com/dist/components/form.js"></script>
+<style type="text/css">
+	body {
+		background-color: #DADADA;
+	}
+	body > .grid {
+		height: 100%;
+	}
+	.image {
+		margin-top: -100px;
+	}
+	.column {
+		max-width: 450px;
+	}
+</style>
+<script>
+$(document)
+	.ready(function() {
+		$('.ui.form')
+			.form({
+				fields: {
+					email: {
+						identifier: 'session_email',
+						rules: [
+							{
+								type: 'empty',
+								prompt: 'Please enter your e-mail'
+							},
+							{
+								type: 'email',
+								prompt: 'Please enter a valid e-mail'
+							}
+						]
+					},
+					password: {
+						identifier: 'session_password',
+						rules: [
+							{
+								type: 'empty',
+								prompt: 'Please enter your password'
+							},
+							{
+								type: 'length[6]',
+								prompt: 'Your password must be at least 6 characters'
+							}
+						]
+					}
+				}
+			})
+		;
+	})
+;
+</script>
+
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui teal image header">
+      <!-- <img src="assets/images/logo.png" class="image"> -->
+      <div class="content">
+        Log-in to your account
+      </div>
+    </h2>
+		<%= form_for @conn, Routes.session_path(@conn, :create), [as: :session, class: "ui large form"], fn f  -> %>
+
+			<% login_field = Coherence.Config.login_field %>
+				<div class="ui stacked segment">
+					<div class="field">
+						<div class="ui left icon input">
+							<i class="user icon"></i>
+							<%= required_label f, login_field, style: "display: none" %>
+							<%= text_input f, login_field, placeholder: "E-mail address", required: "", autofocus: true %>
+							<%= error_tag f, login_field %>
+						</div>
+					</div>
+					<div class="field">
+						<div class="ui left icon input">
+							<i class="lock icon"></i>
+							<%= required_label f, dgettext("coherence", "Password"), style: "display: none" %>
+							<%= password_input f, :password, type: "password", placeholder: "Password", required: "" %>
+							<%= error_tag f, :password %>
+						</div>
+					</div>
+					<%= submit dgettext("coherence", "Sign In"), class: "ui fluid large teal submit button" %>
+					<!-- <%= link dgettext("coherence", "Cancel"), to: Coherence.Config.logged_out_url("/"), class: "btn" %> -->
+				</div>
+
+				<div class="ui error message"></div>
+
+
+			<%= if @remember do %>
+				<div class="form-group">
+					<input type="checkbox"  name="remember" id="remember">
+					<label for="remember"><%= dgettext "coherence", "Remember Me?" %></label>
+				</div>
+				<br />
+			<% end %>
+
+		<% end %>
+
+
+    <div class="ui message">
+			<%= coherence_links(@conn, :new_session) %>
+    </div>
+  </div>
+</div>
