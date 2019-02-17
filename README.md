@@ -4,7 +4,7 @@ This repo contains a simple script for cloning a templatized phoenix 1.4 app int
 
 With liveview on it's way I've been prototyping some ideas with drab and texas and I got sick of getting past the boilerplate with all of the tools each time I wanted to start something new. The idea here is to make generating a new project as friction free as possible so I could toss them away with less guilt when I was done trying what I wanted.
 
-The template project preconfigures a few common libraries and combines some samples to make it easier to test things out with less friction. Some of these libraries include:
+The template project preconfigures or includes a few common libraries and combines some samples to make it easier to get up and running. These libraries include:
 
   * [coherence](https://github.com/smpallen99/coherence) with full options. Currently runs a patched version of coherence that hasn't had it's PR merged back into the main repo yet.
   * [texas](https://gitlab.com/dgmcguire/texas). It integrates the todo list demo from [`https://gitlab.com/dgmcguire/example_texas_app`](https://gitlab.com/dgmcguire/example_texas_app). It functions the same but the styling is not 100% identical to the original.
@@ -27,7 +27,7 @@ To start a new project
   * create database with `mix ecto.setup`
   * start server with `mix phx.server`
 
-You will also want to run `mix phx.gen.secret` to generate a replacement secret token for the ones configured in dev.exs and prod.secret.exs if you intend to keep that file. In the future I might have the script generate replacement token during the build process.
+You will also want to run `mix phx.gen.secret` to generate a replacement secret token for the ones configured in dev.exs and prod.secret.exs if you intend to keep that file. In the future I might have the script generate a replacement token during the build process.
 
 ## Other options
 
