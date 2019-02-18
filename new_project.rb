@@ -1,4 +1,4 @@
-#!/usr/bin/which ruby
+#!/usr/bin/env ruby -w
 
 args = ARGV
 
@@ -22,7 +22,7 @@ BUILD_DIR = "build"
 PROJECT_DIR = File.join(BUILD_DIR, PROJECT_NAME)
 BACKUP_EXT_NAME = ".bak"
 
-MODULE_NAME = args[1].presence || camelize(PROJECT_NAME)
+MODULE_NAME = args[1] || camelize(PROJECT_NAME)
 
 def pipe(*commands)
   commands.join(" | ")
@@ -93,4 +93,14 @@ puts "Starting dry run..." if IS_DRY_RUN
 commands.each do |command|
   puts command
   system(command) unless IS_DRY_RUN
+end
+
+unless IS_DRY_RUN
+  puts "\n! Finished creating project in #{PROJECT_DIR}. Start it up:"
+  puts
+  puts "\tcd #{PROJECT_DIR}"
+  puts "\tmix do deps.get, ecto.setup, ecto.migrate"
+  puts "\tmix phx.server"
+  puts
+  puts "Seeing an error with the UUID lib? Re-running the failing command should fix the problem."
 end

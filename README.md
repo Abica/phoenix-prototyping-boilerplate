@@ -22,10 +22,10 @@ It is worth noting that drab and texas appear to play well together if you use t
 To start a new project
 
   * run `ruby new_project.rb new_project_name`
-  * change into new project with `cd build/new_project_name`
-  * get dependencies with `mix deps.get`
-  * create database with `mix ecto.setup`
-  * start server with `mix phx.server`
+  * change into the new directory `cd build/new_project_name`
+  * get the dependencies `mix deps.get`
+  * create the database `mix do ecto.setup, ecto.migrate`
+  * start the server `mix phx.server`
 
 You will also want to run `mix phx.gen.secret` to generate a replacement secret token for the ones configured in dev.exs and prod.secret.exs if you intend to keep that file. In the future I might have the script generate a replacement token during the build process.
 
